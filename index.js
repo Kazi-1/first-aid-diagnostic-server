@@ -1,17 +1,17 @@
 const express = require('express')
 const app = express();
 const cors = require('cors');
-// const admin = require("firebase-admin");
+const admin = require("firebase-admin");
 require('dotenv').config()
 const { MongoClient } = require('mongodb');
 
 const port = process.env.PORT || 5000;
 
-// const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+const serviceAccount = require('./first-aid-diagnostic-firebase-adminsdk.json');
 
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount)
-// });
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 app.use(cors());
 app.use(express.json());
